@@ -8,36 +8,67 @@ require('dotenv').config()
  */
 module.exports = {
   solidity: {
-    version: '0.6.12',
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200,
+    compilers: [
+      {
+        version: '0.6.12',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
       },
-    },
+      {
+        version: '0.7.5',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+    ],
   },
   networks: {
-    rinkeby: {
-      url: `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      accounts: [`0x${process.env.PRIVATE_KEY}`],
+    hardhat: {
+      forking: {
+        url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
+        blockNumber: 13685625,
+      },
+      chainId: 1,
+      initialBaseFeePerGas: 5,
+      loggingEnabled: false,
+      allowUnlimitedContractSize: false,
+      blockGasLimit: 50000000,
     },
-    ropsten: {
-      url: `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      accounts: [`0x${process.env.PRIVATE_KEY}`],
+    localhost: {
+      forking: {
+        url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
+        blockNumber: 13685625,
+      },
+      accounts: process.env.PRIVATE_KEY
+        ? [process.env.PRIVATE_KEY]
+        : {
+            mnemonic: 'test test test test test test test test test test test junk',
+          },
     },
     mainnet: {
-      url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      accounts: [`0x${process.env.PRIVATE_KEY}`],
-    },
-    bsc_testnet: {
-      url: `https://speedy-nodes-nyc.moralis.io/${process.env.MORALIS_API_KEY}/bsc/testnet`,
-      accounts: [`0x${process.env.PRIVATE_KEY}`],
-      gasPrice: 10 * 1000000000,
-    },
-    bsc_mainnet: {
-      url: `https://speedy-nodes-nyc.moralis.io/${process.env.MORALIS_API_KEY}/bsc/mainnet`,
-      accounts: [`0x${process.env.PRIVATE_KEY}`],
-      gasPrice: 5 * 1000000000,
+      url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
+      accounts: process.env.PRIVATE_KEY
+        ? [process.env.PRIVATE_KEY]
+        : {
+            mnemonic: 'test test test test test test test test test test test junk',
+          },
+      timeout: 2147483647,
     },
   }
 }

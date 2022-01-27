@@ -1,0 +1,18 @@
+{
+  "snapshotBlockNumber": 13685625,
+  "governance": "0x5efda50f22d34F262c29268506C5Fa42cB56A1Ce",
+  "novaProxy": "0xd692fd2d0b2fbd2e52cfa5b5b9424bc981c30696",
+  "newNovaImpl": "0x000000000000000000000000000000000000dead",
+  "ethAmbBridge": "0x4C36d2919e407f0Cc2Ee3c993ccF8ac26d9CE64e",
+  "xdaiAmbBridge": "0x75df5af045d91108662d8080fd1fefad6aa0bb59",
+  "gasLimit": 200000,
+  "singletonFactory": "0xce0042B868300000d44A59004Da54A005ffdcf9f",
+  "singletonFactoryVerboseWrapper": "0xCEe71753C9820f063b38FDbE4cFDAf1d3D928A80",
+  "salt": "0x746f726e61646f00000000000000000000000000000000000000000000000000",
+  "tokenAddresses": {
+    "torn": "0x77777FeDdddFfC19Ff86DB637967013e6C6A116C"
+  },
+  "whales": {
+    "torn": "0xF977814e90dA44bFA03b6295A0616a897441aceC"
+  }
+}

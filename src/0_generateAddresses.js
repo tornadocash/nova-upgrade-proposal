@@ -10,7 +10,7 @@ async function generate(config) {
       .encodeDeploy([
         config.novaProxy,
         config.newNovaImpl,
-        config.bridge,
+        config.ethAmbBridge,
         config.gasLimit,
       ])
       .slice(2)

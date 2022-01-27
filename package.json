@@ -21,7 +21,8 @@
   "dependencies": {
     "ethereum-waffle": "^3.4.0",
     "ethers": "^5.5.1",
-    "tornado-governance": "2.0.0"
+    "tornado-governance": "2.0.0",
+    "omnibridge": "https://github.com/omni/omnibridge"
   },
   "devDependencies": {
     "@ethersproject/testcases": "^5.4.0",
