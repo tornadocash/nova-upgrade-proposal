@@ -2,17 +2,12 @@ const { ethers } = require('hardhat')
 
 async function generate(config) {
   const singletonFactory = await ethers.getContractAt('SingletonFactory', config.singletonFactory)
-  
+
   const ProposalFactory = await ethers.getContractFactory('NovaUpgradeProposal')
   const deploymentBytecodeProposal =
     ProposalFactory.bytecode +
     ProposalFactory.interface
-      .encodeDeploy([
-        config.novaProxy,
-        config.newNovaImpl,
-        config.ethAmbBridge,
-        config.gasLimit,
-      ])
+      .encodeDeploy([config.novaProxy, config.newNovaImpl, config.ethAmbBridge, config.gasLimit])
       .slice(2)
 
   const proposalAddress = ethers.utils.getCreate2Address(

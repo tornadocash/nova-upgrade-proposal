@@ -1,6 +1,9 @@
 # Nova upgrade proposal
+
 There is Tornado governance proposal for upgrade nova contract on Xdai chain.
-## Tests 
+
+## Tests
+
 1. Install dependencies:
 
 ```
@@ -20,7 +23,9 @@ There is Tornado governance proposal for upgrade nova contract on Xdai chain.
 ```
     yarn lint
 ```
+
 ## Deploy
+
 1. Check `config.json` for actual values.
 
 2. Run deploy:

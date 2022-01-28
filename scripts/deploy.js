@@ -16,7 +16,7 @@ async function main() {
     'SingletonFactory',
     config.singletonFactoryVerboseWrapper,
   )
-  const contract = await generate(config)  
+  const contract = await generate(config)
   await deploy({ ...contract, singletonFactory })
 }
 

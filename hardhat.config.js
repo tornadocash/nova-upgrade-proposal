@@ -57,18 +57,14 @@ module.exports = {
       },
       accounts: process.env.PRIVATE_KEY
         ? [process.env.PRIVATE_KEY]
-        : {
-            mnemonic: 'test test test test test test test test test test test junk',
-          },
+        : { mnemonic: 'test test test test test junk' },
     },
     mainnet: {
       url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
       accounts: process.env.PRIVATE_KEY
         ? [process.env.PRIVATE_KEY]
-        : {
-            mnemonic: 'test test test test test test test test test test test junk',
-          },
+        : { mnemonic: 'test test test test test junk' },
       timeout: 2147483647,
     },
-  }
+  },
 }

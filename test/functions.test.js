@@ -1,6 +1,5 @@
 const { ethers } = require('hardhat')
 const { expect } = require('chai')
-const fs = require('fs')
 
 const config = require('./test.config.json')
 const { getSignerFromAddress, takeSnapshot, revertSnapshot } = require('./utils')
@@ -96,14 +95,14 @@ describe('General functionality tests', () => {
       state = await gov.state(id)
       expect(state).to.be.equal(ProposalState.AwaitingExecution)
 
-      await gov.execute(id)      
+      await gov.execute(id)
 
       const amb = await ethers.getContractAt(ambPath, config.ethAmbBridge)
       const filter = amb.filters.UserRequestForAffirmation()
       const fromBlock = await ethers.provider.getBlock()
       events = await amb.queryFilter(filter, fromBlock.number)
-      bridgedData = events[0].args.encodedData.toString()
-      expect(bridgedData.slice(106,146)).to.be.equal(config.novaProxy.slice(2))
+      const bridgedData = events[0].args.encodedData.toString()
+      expect(bridgedData.slice(106, 146)).to.be.equal(config.novaProxy.slice(2))
       expect(bridgedData.slice(196)).to.be.equal(config.newNovaImpl.slice(2))
 
       state = await gov.state(id)
