@@ -1,23 +1,22 @@
 const { ethers } = require('hardhat')
-const { generate } = require('../src/0_generateAddresses')
 const config = require('../config')
 
-async function deploy({ address, bytecode, singletonFactory }) {
-  const contractCode = await ethers.provider.getCode(address)
-  if (contractCode !== '0x') {
-    console.log(`Contract ${address} already deployed. Skipping...`)
-    return
-  }
-  await singletonFactory.deploy(bytecode, config.salt)
-}
-
 async function main() {
-  const singletonFactory = await ethers.getContractAt(
-    'SingletonFactory',
-    config.singletonFactoryVerboseWrapper,
+  const [deployer] = await ethers.getSigners()
+
+  console.log('Deploying contracts with the account:', deployer.address)
+
+  console.log('Account balance:', (await deployer.getBalance()).toString())
+
+  const Proposal = await ethers.getContractFactory('NovaUpgradeProposal')
+  const proposal = await Proposal.deploy(
+    config.novaProxy,
+    config.newNovaImpl,
+    config.ethAmbBridge,
+    config.gasLimit,
   )
-  const contract = await generate(config)
-  await deploy({ ...contract, singletonFactory })
+
+  console.log('Proposal address:', proposal.address)
 }
 
 main()

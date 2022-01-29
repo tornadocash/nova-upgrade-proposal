@@ -2,8 +2,7 @@ const { ethers } = require('hardhat')
 const { expect } = require('chai')
 
 const config = require('./test.config.json')
-const { getSignerFromAddress, takeSnapshot, revertSnapshot } = require('./utils')
-const { generate } = require('../src/0_generateAddresses')
+const { getSignerFromAddress } = require('./utils')
 
 const ambPath = 'omnibridge/contracts/interfaces/IAMB.sol:IAMB'
 
@@ -18,8 +17,6 @@ const ProposalState = {
 }
 
 describe('General functionality tests', () => {
-  let snapshotId
-
   let torn = config.tokenAddresses.torn
   let gov
   let tornWhale
@@ -39,17 +36,14 @@ describe('General functionality tests', () => {
     tornWhale = await getSignerFromAddress(config.whales.torn)
 
     // deploy proposal
-    const singletonFactory = await ethers.getContractAt(
-      'SingletonFactory',
-      config.singletonFactoryVerboseWrapper,
+    const Proposal = await ethers.getContractFactory('NovaUpgradeProposal')
+    const [deployer] = await ethers.getSigners()
+    proposal = await Proposal.connect(deployer).deploy(
+      config.novaProxy,
+      config.newNovaImpl,
+      config.ethAmbBridge,
+      config.gasLimit,
     )
-
-    const contracts = await generate(config)
-
-    await singletonFactory.deploy(contracts.proposalContract.bytecode, config.salt, { gasLimit: 50000000 })
-    proposal = await ethers.getContractAt('NovaUpgradeProposal', contracts.proposalContract.address)
-
-    snapshotId = await takeSnapshot()
   })
 
   describe('Proposal execution', () => {
@@ -108,10 +102,5 @@ describe('General functionality tests', () => {
       state = await gov.state(id)
       expect(state).to.be.equal(ProposalState.Executed)
     })
-  })
-
-  afterEach(async () => {
-    await revertSnapshot(snapshotId)
-    snapshotId = await takeSnapshot()
   })
 })

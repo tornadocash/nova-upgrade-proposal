@@ -3,8 +3,6 @@
 pragma solidity ^0.6.12;
 pragma experimental ABIEncoderV2;
 
-import { ImmutableGovernanceInformation } from "tornado-governance/contracts/v2-vault-and-gas/ImmutableGovernanceInformation.sol";
-
 interface IUpgradeableProxy {
     function upgradeTo(address newImplementation) external;
 }
@@ -17,7 +15,7 @@ interface IAMB {
     ) external returns (bytes32);
 }
 
-contract NovaUpgradeProposal is ImmutableGovernanceInformation {
+contract NovaUpgradeProposal {
     event MessagePassed(bytes32 msgId);
 
     address public immutable novaProxy;

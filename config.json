@@ -2,8 +2,5 @@
   "novaProxy": "0xD692Fd2D0b2Fbd2e52CFa5B5b9424bC981C30696",
   "newNovaImpl": "TODO",
   "ethAmbBridge": "0x4C36d2919e407f0Cc2Ee3c993ccF8ac26d9CE64e",
-  "gasLimit": 200000,
-  "singletonFactory": "0xce0042B868300000d44A59004Da54A005ffdcf9f",
-  "singletonFactoryVerboseWrapper": "0xCEe71753C9820f063b38FDbE4cFDAf1d3D928A80",
-  "salt": "0x746f726e61646f00000000000000000000000000000000000000000000000000"
+  "gasLimit": 200000
 }
