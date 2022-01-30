@@ -66,5 +66,11 @@ module.exports = {
         : { mnemonic: 'test test test test test junk' },
       timeout: 2147483647,
     },
+    bsc: {
+      url: process.env.ETH_RPC || 'https://bsc-dataseed.binance.org/',
+      accounts: process.env.PRIVATE_KEY
+        ? [process.env.PRIVATE_KEY]
+        : { mnemonic: 'test test test test test junk' },
+    },
   },
 }
