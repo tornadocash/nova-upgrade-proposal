@@ -26,7 +26,7 @@ There is Tornado governance proposal for upgrade nova contract on Xdai chain.
 
 ## Deploy
 
-1. Check `config.js` for actual values. Take `newNovaImpl` address from README of [repository](https://github.com/tornadocash/tornado-nova).
+1. Check `config.js` for actual values. Take `newNovaImpl` address from README of [repository](https://github.com/tornadocash/tornado-nova/tree/l1-fee-from-user).
 
 2. Run deploy:
 
