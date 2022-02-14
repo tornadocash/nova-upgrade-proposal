@@ -26,10 +26,10 @@ There is Tornado governance proposal for upgrade nova contract on Xdai chain.
 
 ## Deploy
 
-1. Check `config.json` for actual values.
+1. Check `config.js` for actual values. Take `newNovaImpl` address from README of [repository](https://github.com/tornadocash/tornado-nova).
 
 2. Run deploy:
 
 ```
-    npx hardhat run scripts/deploy.js --network <network-name>
+    npx hardhat run scripts/deploy.js --network mainnet
 ```
