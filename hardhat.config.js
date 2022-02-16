@@ -73,4 +73,7 @@ module.exports = {
         : { mnemonic: 'test test test test test junk' },
     },
   },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_KEY,
+  },
 }
