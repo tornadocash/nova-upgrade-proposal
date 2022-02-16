@@ -8,6 +8,6 @@ module.exports = {
 
   // MAINNET VALUES
   novaProxy: '0xD692Fd2D0b2Fbd2e52CFa5B5b9424bC981C30696',
-  newNovaImpl: '0x85a3C2E4f0FcD4e881e0a3D1078496660C74bb35',
+  newNovaImpl: '0x0CDD3705aF7979fBe80A64288Ebf8A9Fe1151cE1',
   ethAmbBridge: '0x4C36d2919e407f0Cc2Ee3c993ccF8ac26d9CE64e',
 }
